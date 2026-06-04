@@ -65,6 +65,10 @@ Route::get('/products', [ProductController::class, 'index']);
 // SHOW BY ID
 Route::get('/products/id/{id}', [ProductController::class, 'show']);
 
-// SHOW HTML FORM
+// SHOW HTML FORM (CREATE PRODUCT)
 Route::get('/products/create', [ProductController::class, 'create']);
 Route::post('/products/store', [ProductController::class, 'store']);
+
+// SHOW HTML FORM (EDIT / UDPATE PRODUCT)
+Route::get('/products/edit/{id}', [ProductController::class, 'edit']);
+Route::put('/products/update/{id}', [ProductController::class, 'update']);
