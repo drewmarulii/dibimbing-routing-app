@@ -71,4 +71,29 @@ class ProductController extends Controller
             }
         }
     }
+
+    public function edit($id) {
+        foreach ($this->products as $product) {
+            if ($product['id'] == $id) {
+                return view('products.edit', ['product' => $product]);
+            }
+        }
+    }
+
+    public function update(Request $request, $id)
+    {
+        $updatedProduct = [
+            'id' => $id,
+            'nama_layanan' => $request->nama_layanan,
+            'deskripsi' => $request->deskripsi,
+            'harga' => $request->harga,
+            'kategori' => $request->kategori,
+        ];
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Product updated successfully',
+            'data' => $updatedProduct
+        ], 201);
+    }
 }
